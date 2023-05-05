@@ -1,4 +1,6 @@
-'''The `Solution` class provides an effective method "romanToInt", to convert a Roman numeral string to its respective integer value. The method is designed to take in a string s representing a Roman numeral, and uses the `roman_values` dictionary to map each Roman numeral symbol to its integer value. By iterating through each character of the input string using a loop, the method checks if the current symbol should be subtracted or added to the total integer value, depending on the value of the next symbol. The method then returns the total integer value once all the characters have been processed.'''
+The `Solution` class provides an effective method "romanToInt", to convert a Roman numeral string to its respective integer value. The method is designed to take in a string s representing a Roman numeral, and uses the `roman_values` dictionary to map each Roman numeral symbol to its integer value. By iterating through each character of the input string using a loop, the method checks if the current symbol should be subtracted or added to the total integer value, depending on the value of the next symbol. The method then returns the total integer value once all the characters have been processed.
+
+
 class Solution:
     def romanToInt(self, s: str) -> int:
         roman_values = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
