@@ -1,0 +1,12 @@
+we use "temp" (dictionary) called "temp" and loop through each element of the nums list using the "enumerate" function.
+For each element, we calculate the complement "c" and check if it exists in the "temp".Otherwise , we add the current element and its index to the "temp".
+
+#The code starts:
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        temp = {}
+        for i, num in enumerate(nums):
+            c = target - num
+            if c in temp:
+                return [temp[c], i]
+            temp[num] = i
