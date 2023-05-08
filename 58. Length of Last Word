@@ -1,0 +1,10 @@
+
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        s = s.rstrip()
+        last_space_index = s.rfind(' ')
+        if last_space_index == -1:
+            return len(s)
+        else:
+            # returns the length of the substring after the last space
+            return len(s) - last_space_index - 1
