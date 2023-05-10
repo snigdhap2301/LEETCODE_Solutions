@@ -1,3 +1,6 @@
+#APPROACH : This code defines a function to check if a string is a palindrome by removing non-alphanumeric characters and comparing the reversed string.
+
+
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         # Convert to lowercase and remove non-alphanumeric characters
