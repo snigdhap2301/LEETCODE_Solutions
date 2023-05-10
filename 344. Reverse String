@@ -1,3 +1,5 @@
+//Approach: It uses two pointers to swap characters at opposite ends of the string and move inward until they meet in the middle
+
 class Solution {
     public void reverseString(char[] s) {
         // Initialize two pointers
