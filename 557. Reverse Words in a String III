@@ -1,3 +1,5 @@
+//APPROACH : split()  store in an array called words. We then iterate through each word in the array, reverse the order of characters using a StringBuilder, and append the reversed word to a new StringBuilder called "sb"
+
 class Solution {
     public String reverseWords(String s) {
         String[] words = s.split(" ");
