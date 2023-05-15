@@ -1,0 +1,23 @@
+class Solution {
+    public boolean detectCapitalUse(String word) {
+        int capitalCount = 0;
+        for (char c : word.toCharArray()) 
+        {
+            if (Character.isUpperCase(c)) {
+                capitalCount++;
+            }
+        }
+
+        if (capitalCount == word.length()) {
+            return true; 
+        } else if (capitalCount == 0) 
+        {
+            return true; // No capitals
+        } else if (capitalCount == 1 && Character.isUpperCase(word.charAt(0))) 
+        {
+            return true; // Only the first letter is capital
+        } else {
+            return false; // Capital usage is not right
+        }
+    }
+}
