@@ -1,0 +1,27 @@
+//APPROACH :- "This code determines if two strings are isomorphic by comparing character positions, using arrays to store encountered positions.If all characters can be mapped without any discrepancies, it returns true, indicating that the strings are isomorphic, else Otherwise."
+
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        if (s.length() != t.length()) {
+            return false; // different length strings can not be isomorphic
+        }
+        
+        int[] sChars = new int[256];
+        int[] tChars = new int[256];
+        
+        for (int i = 0; i < s.length(); i++) {
+            char ch_s = s.charAt(i);
+            char ch_t = t.charAt(i);
+            
+            if (sChars[ch_s] != tChars[ch_t]) {
+                return false;
+            }
+            
+            
+            sChars[ch_s] = i + 1;
+            tChars[ch_t] = i + 1;
+        }
+        
+        return true; // All characters can be mapped, so they are isomorphic
+    }
+}
