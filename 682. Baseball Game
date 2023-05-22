@@ -1,0 +1,36 @@
+class Solution {
+    public int calPoints(String[] operations) {
+        List <Integer> scores = new ArrayList<>();
+
+        for (String operation : operations) {
+            int score;
+            int size = scores.size();
+            switch (operation) {
+                case "+":
+                    int prev1 = scores.get(size - 1);
+                    int prev2 = scores.get(size - 2);
+                    score = prev1 + prev2;
+                    scores.add(score);
+                    break;
+                case "D":
+                    score = 2 * scores.get(size - 1);
+                    scores.add(score);
+                    break;
+                case "C":
+                    scores.remove(size - 1);
+                    break;
+                default:
+                    score = Integer.parseInt(operation);
+                    scores.add(score);
+                    break;
+            }
+        }
+
+        int totalScore = 0;
+        for (int score : scores) {
+            totalScore += score;
+        }
+
+        return totalScore;
+    }
+}
