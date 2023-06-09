@@ -1,0 +1,23 @@
+class Solution {
+    public boolean isHappy(int n) {
+        int num1= n ;
+        int num2= sumHappy(n);
+        while (num2!=1 && num1!=num2){
+            num1 = sumHappy(num1);
+            num2 = sumHappy(sumHappy(num2));
+
+        }
+        return (num2==1);
+
+    }
+    public int sumHappy(int n){
+        int sum=0;
+        while (n>0){
+            int digit = n%10;
+            sum+=digit*digit;
+            n/=10;
+
+        }
+        return sum ;
+            }
+}
