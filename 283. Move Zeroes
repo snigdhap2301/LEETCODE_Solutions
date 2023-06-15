@@ -1,0 +1,19 @@
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int x = 0;
+        int y = 0;
+        
+        while (x < nums.length) {
+            if (nums[x] != 0) {
+                nums[y] = nums[x];
+                y++;
+            }
+            x++;
+        }
+        
+        while (y < nums.length) {
+            nums[y] = 0;
+            y++;
+        }
+    }
+}
