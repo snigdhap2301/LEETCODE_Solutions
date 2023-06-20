@@ -1,0 +1,18 @@
+class Solution {
+    public int jump(int[] nums) {
+        int nLength = nums.length;
+        int[] minJumps = new int[nLength];
+        minJumps[0] = 0;
+
+        for (int i = 1; i < nLength; i++) {
+            minJumps[i] = Integer.MAX_VALUE;
+            for (int j = 0; j < i; j++) {
+                if (j + nums[j] >= i) {
+                     minJumps[i] = Math.min( minJumps[i],  minJumps[j] + 1);
+                }
+            }
+        }
+
+        return  minJumps[(nLength) - 1];
+    }
+}
