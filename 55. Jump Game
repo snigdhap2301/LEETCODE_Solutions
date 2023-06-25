@@ -1,0 +1,31 @@
+class Solution {
+    public boolean canJump(int[] nums) {
+        int lastIndex = nums.length - 1;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (i > lastIndex) {
+                break;
+            }
+
+            if (i + nums[i] >= lastIndex) {
+                return true;
+            }
+
+            if (nums[i] == 0 && i == lastIndex) {
+                return true;
+            }
+
+            if (nums[i] == 0) {
+                int j = i - 1;
+                while (j >= 0 && nums[j] <= i - j) {
+                    j--;
+                }
+                if (j < 0) {
+                    return false;
+                }
+            }
+        }
+
+        return false;
+    }
+}
