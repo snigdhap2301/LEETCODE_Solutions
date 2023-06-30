@@ -1,0 +1,29 @@
+class Solution 
+{
+    public List<String> printVertically(String s)
+    {
+        String[] ar=s.split(" ");
+        List<String> ans=new ArrayList<>();
+        int maxS=0;
+        for(int k=0;k<ar.length;k++)
+        {
+            maxS=Math.max(maxS,ar[k].length());
+        }
+        for(int j=0;j<maxS;j++)
+        {
+            StringBuilder sb=new StringBuilder();
+            for(int i=0;i<ar.length;i++){
+                if(j>=ar[i].length()) sb.append(" ");
+                else sb.append(ar[i].charAt(j));
+            }
+            
+            while(sb.charAt(sb.length()-1)==' ')
+            {
+                sb.setLength(sb.length()-1);
+            }
+            
+            ans.add(sb.toString());
+        }
+        return ans;
+    }
+}
