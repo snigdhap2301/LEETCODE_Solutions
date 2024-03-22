@@ -1,0 +1,14 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        c={}
+        for char in s:
+            c[char]=c.get(char,0)+1
+        max_len=0
+        hass_odd=False
+        for count in c.values():
+            if count%2==0:
+                max_len+=count
+            else:
+                max_len+=count-1
+                hass_odd=True
+        return max_len + 1 if hass_odd else max_len
