@@ -1,0 +1,19 @@
+class Solution(object):
+    def maximumProfit(self, prices, k):
+        """
+        :type prices: List[int]
+        :type k: int
+        :rtype: int
+        """
+        n = len(prices)
+        dp = [[0] * n for _ in range(k + 1)]
+        for t in range(1, k + 1):
+            best_lo = -prices[0]
+            best_sh = prices[0]
+            for i in range(1, n):
+                val = max(best_lo + prices[i], best_sh - prices[i])
+                dp[t][i] = max(dp[t][i-1], val)
+                prev = dp[t-1][i-1]
+                best_lo = max(best_lo, prev - prices[i])
+                best_sh = max(best_sh, prev + prices[i])
+        return dp[k][n-1]
