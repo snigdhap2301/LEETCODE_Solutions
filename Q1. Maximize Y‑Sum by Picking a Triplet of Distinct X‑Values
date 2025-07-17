@@ -1,0 +1,16 @@
+class Solution(object):
+    def maxSumDistinctTriplet(self, x, y):
+        """
+        :type x: List[int]
+        :type y: List[int]
+        :rtype: int
+        """
+        best = {}
+        for xi, yi in zip(x, y):
+            if xi not in best or yi > best[xi]:
+                best[xi] = yi
+        if len(best) < 3:
+            return -1
+        import heapq
+        top_three = heapq.nlargest(3, best.values())
+        return sum(top_three)
