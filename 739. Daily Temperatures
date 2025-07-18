@@ -1,0 +1,15 @@
+class Solution(object):
+    def dailyTemperatures(self, temperatures):
+        """
+        :type temperatures: List[int]
+        :rtype: List[int]
+        """
+        stack = []
+        ln = len(temperatures)
+        result = [0] * ln
+        for i in range(ln):
+            while stack and temperatures[stack[-1]] < temperatures[i]:
+                prev = stack.pop()
+                result[prev] = i - prev
+            stack.append(i)
+        return result
