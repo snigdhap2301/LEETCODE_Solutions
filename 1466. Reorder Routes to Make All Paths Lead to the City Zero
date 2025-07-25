@@ -1,0 +1,35 @@
+class Solution(object):
+    def minReorder(self, n, connections):
+        """
+        :type n: int
+        :type connections: List[List[int]]
+        :rtype: int
+        """
+        seen = set()
+        seen.add(0)
+        neighbors = {}
+        for a, b in connections:
+            if a in neighbors:
+                neighbors[a].append((b, 1))
+            else:
+                neighbors[a] = [(b,1)]
+            if b in neighbors:
+                neighbors[b].append((a,0))
+            else:
+                neighbors[b] = [(a,0)]
+        count = 0
+        stack = []
+        for data in neighbors[0]:
+            stack.append(data)
+        while stack:
+            data = stack.pop()
+            city = data[0]
+            direction = data[1]
+            if city in seen:
+                continue
+            seen.add(city)
+            if direction == 1:
+                count += 1
+            for data in neighbors[city]:
+                stack.append(data)
+        return count
