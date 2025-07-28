@@ -1,0 +1,25 @@
+class Solution(object):
+    def maxScore(self, nums1, nums2, k):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :type k: int
+        :rtype: int
+        """
+        zipped = zip(nums2,nums1)
+        zipped.sort(reverse=True)
+        temp = []
+        result = 0
+        curr = 0
+        for x,y in zipped:
+            heappush(temp,y)
+            curr += y
+            if len(temp) > k:
+                curr -= heappop(temp)
+            if len(temp) == k:
+                result = max(result,curr*x)
+        return result
+            
+
+        sum = 0
+        return sum*nums2[len(nums1)-k]
