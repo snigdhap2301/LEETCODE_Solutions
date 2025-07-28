@@ -1,0 +1,25 @@
+class SmallestInfiniteSet(object):
+
+    def __init__(self):
+        self.s = 2**(1000)-1
+
+    def popSmallest(self):
+        """
+        :rtype: int
+        """
+        lsb = (self.s & -self.s).bit_length()-1
+        self.s ^= (1<<lsb)
+        return lsb+1
+
+    def addBack(self, num):
+        """
+        :type num: int
+        :rtype: None
+        """
+        self.s |= 1<<(num-1)
+
+
+# Your SmallestInfiniteSet object will be instantiated and called as such:
+# obj = SmallestInfiniteSet()
+# param_1 = obj.popSmallest()
+# obj.addBack(num)
