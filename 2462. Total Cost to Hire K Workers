@@ -1,0 +1,43 @@
+class Solution(object):
+    def totalCost(self, costs, k, candidates):
+        """
+        :type costs: List[int]
+        :type k: int
+        :type candidates: int
+        :rtype: int
+        """
+        l = min(candidates - 1, (len(costs) // 2) + 1)
+        r = len(costs) - candidates
+        if l >= r:
+            heapq.heapify(costs)
+            return sum(heapq.nsmallest(k, costs))
+        else:
+            res = 0
+            heap = []
+            s = set()
+            
+            # Push elements from the first range (0 to l)
+            for i in range(l + 1):
+                if (costs[i], i) not in s:
+                    heapq.heappush(heap, (costs[i], i))
+                    s.add((costs[i], i))
+            for i in range(r, len(costs)):
+                if (costs[i], i) not in s:
+                    heapq.heappush(heap, (costs[i], i))
+                    s.add((costs[i], i))
+            while k > 0 and heap:
+                cost, i = heapq.heappop(heap)
+                if l < r:
+                    if i <= l:
+                        l += 1
+                        if (costs[l],l) not in s:
+                            heapq.heappush(heap, (costs[l], l))
+                            s.add((costs[l], l))
+                    else:
+                        r -= 1
+                        if (costs[r],r) not in s:
+                            heapq.heappush(heap, (costs[r], r))
+                            s.add((costs[r], r))
+                res += cost
+                k -= 1
+            return res
