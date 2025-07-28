@@ -1,0 +1,34 @@
+class Solution(object):
+    def nearestExit(self, maze, entrance):
+        """
+        :type maze: List[List[str]]
+        :type entrance: List[int]
+        :rtype: int
+        """
+        q=[entrance]
+        st=entrance
+        m=len(maze)
+        n=len(maze[0])
+        ans=0
+        while q:
+            i=len(q)
+            while i>0:
+                i-=1
+                st=q.pop(0)
+                r,c=st[0],st[1]
+                if (r==0 or r==m-1 or c==0 or c==n-1) and (r!=entrance[0] or c!=entrance[1]):
+                    return ans
+                if r!=0 and maze[r-1][c]!='+':
+                    q.append([r-1,c])
+                    maze[r-1][c]='+'
+                if r!=m-1 and maze[r+1][c]!='+':
+                    q.append([r+1,c])
+                    maze[r+1][c]='+'
+                if c!=0 and maze[r][c-1]!='+':
+                    q.append([r,c-1])
+                    maze[r][c-1]='+'
+                if c!=n-1 and maze[r][c+1]!='+':
+                    q.append([r,c+1])
+                    maze[r][c+1]='+'
+            ans+=1
+        return -1
