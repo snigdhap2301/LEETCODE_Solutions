@@ -5,18 +5,9 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        n = len(nums)
-        k = n-k 
-        def quickSelect(l,r): 
-            pivot = nums[r] 
-            i = l 
-            for j in range(l,r): 
-                if nums[j]<=pivot: 
-                    nums[i],nums[j]=nums[j],nums[i]
-                    i+=1 
-            nums[i],nums[r]=nums[r],nums[i] 
-            if i>k: return quickSelect(l,i-1)
-            elif i<k: return quickSelect(i+1,r)
-            else:
-                return nums[i]
-        return quickSelect(0,n-1)
+        p = []
+        for x in nums:
+            heapq.heappush(p, x)
+            if len(p) > k:
+                heapq.heappop(p)
+        return p[0]
