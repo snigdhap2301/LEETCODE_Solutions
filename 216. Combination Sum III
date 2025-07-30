@@ -1,0 +1,21 @@
+class Solution(object):
+    def combinationSum3(self, k, n):
+        """
+        :type k: int
+        :type n: int
+        :rtype: List[List[int]]
+        """
+        ans = []
+        def rec(k, n, s, tmp, l):
+            if l == k:
+                if sum(tmp) == n:
+                    ans.append(tmp)
+                    return True
+                return False
+           
+            for i in range(s, 10):
+                if rec(k, n, i+1, tmp+[i], l+1):
+                    break
+					
+        rec(k, n, 1, [], 0)
+        return ans
