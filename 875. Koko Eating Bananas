@@ -1,0 +1,20 @@
+class Solution(object):
+    def minEatingSpeed(self, piles, h):
+        """
+        :type piles: List[int]
+        :type h: int
+        :rtype: int
+        """
+        import math
+        low, high = 1, 10 ** 9
+        
+        while low <= high:
+            k = (low + high) // 2
+            hours = sum(math.ceil(1.0 * pile / k) for pile in piles)
+            
+            if hours > h:
+                low = k + 1
+            else:
+                high = k - 1
+        
+        return low
