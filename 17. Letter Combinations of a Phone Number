@@ -1,0 +1,17 @@
+class Solution(object):
+    def letterCombinations(self, digits):
+        """
+        :type digits: str
+        :rtype: List[str]
+        """
+        L= {'2':"abc",'3':"def",'4':"ghi",'5':"jkl",
+     '6':"mno",'7':"pqrs",'8':"tuv",'9':"wxyz"}
+        chars = [L[digit] for digit in digits]
+        combs = product(*chars)
+        result = []
+        for comb in combs:
+            if not comb:
+                continue
+            string = ''.join(comb)
+            result.append(string)
+        return result
