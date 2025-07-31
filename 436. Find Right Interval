@@ -1,0 +1,25 @@
+class Solution(object):
+    def findRightInterval(self, intervals):
+        """
+        :type intervals: List[List[int]]
+        :rtype: List[int]
+        """
+        s=[(x[0],i) for i,x in enumerate(intervals)]
+
+        s.sort()
+        ans=[]
+        for x in intervals:
+                n=x[1]
+                i=0
+                j=len(s)-1
+                while i<j:
+                    mid=(i+j)//2
+                    if s[mid][0]<n:
+                        i=mid+1
+                    else:
+                        j=mid
+                if s[j][0]>=n:
+                    ans.append(s[j][1])
+                else:
+                    ans.append(-1)
+        return ans
