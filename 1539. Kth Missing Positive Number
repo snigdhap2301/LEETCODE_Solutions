@@ -1,0 +1,16 @@
+class Solution(object):
+    def findKthPositive(self, arr, k):
+        """
+        :type arr: List[int]
+        :type k: int
+        :rtype: int
+        """
+        l=0
+        n=len(arr)
+        while l<n:
+            mid=(l+n)//2
+            if arr[mid]-mid-1<k:
+                l=mid+1
+            else:
+                n=mid
+        return n+k
