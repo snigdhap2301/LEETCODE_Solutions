@@ -1,0 +1,19 @@
+class Solution:
+    def countValidSelections(self, nums: List[int]) -> int:
+        count=0
+        for i in range(len(nums)):
+            if nums[i]!=0:
+                continue
+            for way in [1,-1]:
+                arr=nums.copy()
+                curr=i
+                while 0<=curr<len(nums):
+                    if arr[curr]==0:
+                        curr+=way
+                    else:
+                        arr[curr]-=1
+                        way=-way
+                        curr+=way
+                if all(x==0 for x in arr):
+                    count+=1
+        return count
